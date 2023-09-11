@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const ErrorHandler = require("../utils/errorSchema");
 const asyncHandler = require("../utils/asyncHandler");
 
+//@desc CREATE PERSON
+//Method/url POST /api
+//public
 const createPerson = asyncHandler(async (req, res, next) => {
   const { name } = req.body;
 
@@ -17,6 +20,9 @@ const createPerson = asyncHandler(async (req, res, next) => {
   });
 });
 
+//@desc GET USER BY ID
+//Method/url GET /api/:id
+//public
 const findPerson = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
 
@@ -35,6 +41,9 @@ const findPerson = asyncHandler(async (req, res, next) => {
   });
 });
 
+//@desc UPDATE PERSON DETAILS
+//Method/url PATCH /api/:id
+//public
 const updatePerson = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
   const { name } = req.body;
@@ -58,6 +67,9 @@ const updatePerson = asyncHandler(async (req, res, next) => {
   });
 });
 
+//@desc DELETE PERSON
+//Method/url delete /api/:id
+//public
 const deletePerson = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
   if (!mongoose.isValidObjectId(id)) {
