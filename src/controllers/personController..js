@@ -10,7 +10,11 @@ const createPerson = asyncHandler(async (req, res, next) => {
     return next(new ErrorHandler("Name must be of type string", 400));
   }
   const person = await Person.create({ name });
-  res.status(201).json({ data: person });
+  res.status(201).json({
+    status: "Success",
+    message: "Person created successfully",
+    data: person,
+  });
 });
 
 const findPerson = asyncHandler(async (req, res, next) => {
@@ -24,22 +28,34 @@ const findPerson = asyncHandler(async (req, res, next) => {
   if (!person) {
     return next(new ErrorHandler(`Person with id ${id} not found`, 404));
   }
-  res.status(200).json(person);
+  res.status(200).json({
+    status: "Success",
+    message: "Person retrieved successfully",
+    data: person,
+  });
 });
 
 const updatePerson = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
+  const { name } = req.body;
   if (!mongoose.isValidObjectId(id)) {
     return next(new ErrorHandler("Invalid user id", 400));
   }
-  const updatedPerson = await Person.findByIdAndUpdate(id, req.body, {
+  if (typeof name !== "string") {
+    return next(new ErrorHandler("Name must be of type string", 400));
+  }
+  const updatedPerson = await Person.findByIdAndUpdate(id, name, {
     new: true,
     runValidators: true,
   });
   if (!updatedPerson) {
     return next(new ErrorHandler(`Person with id ${id} not found`, 404));
   }
-  res.status(200).json({ data: updatedPerson });
+  res.status(200).json({
+    status: "Success",
+    message: "User details Updated successfully",
+    data: updatedPerson,
+  });
 });
 
 const deletePerson = asyncHandler(async (req, res, next) => {
