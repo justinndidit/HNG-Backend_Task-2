@@ -6,7 +6,6 @@ This documentation provides information on how to use the Person Resource API to
 
 - [Introduction](#introduction)
 - [Base URL](#base-url)
-- [Authentication](#authentication)
 - [Endpoints](#endpoints)
   - [Get Person by ID](#get-person-by-id)
   - [Create a New Person](#create-a-new-person)
@@ -20,7 +19,7 @@ This documentation provides information on how to use the Person Resource API to
 
 ## Introduction
 
-    The Person Resource API allows you to manage information about individuals, including their names, contact details, and other relevant data. You can use this API to create, retrieve, update, and delete person records.
+    The Person Resource API allows you to manage information(name) about individuals, You can use this API to create, retrieve, update, and delete person records, i.e Supports CRUD operations.
 
 ## Base URL
 
@@ -90,6 +89,7 @@ e.g
 
     The response will be a JSON object confirming the update of the person.
 
+e.g
 {
 "status": "Success",
 "message": "Person retrieved successfully",
@@ -127,6 +127,7 @@ e.g
 
     The response will be a JSON object confirming the update of the person.
 
+e.g
 {
 "status": "Success",
 "message": "User details Updated successfully",
