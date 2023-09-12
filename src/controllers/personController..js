@@ -20,7 +20,30 @@ const createPerson = asyncHandler(async (req, res, next) => {
   });
 });
 
-//@desc GET USER BY ID
+//@desc GET ALL PERSON
+//Method/url POST /api
+//public
+const findPeople = asyncHandler(async (req, res, next) => {
+  const people = await Person.find({});
+
+  if (!people) {
+    return next(new ErrorHandler(`Pe not found`, 404));
+  }
+  if (people.length === 0) {
+    return res.status(200).json({
+      status: "Success",
+      message: "No person detail have been added",
+      data: people,
+    });
+  }
+  res.status(200).json({
+    status: "Success",
+    message: "People retrieved successfully",
+    data: people,
+  });
+});
+
+//@desc GET PERSON BY ID
 //Method/url GET /api/:id
 //public
 const findPerson = asyncHandler(async (req, res, next) => {
@@ -86,6 +109,7 @@ const deletePerson = asyncHandler(async (req, res, next) => {
 module.exports = {
   createPerson,
   findPerson,
+  findPeople,
   updatePerson,
   deletePerson,
 };
