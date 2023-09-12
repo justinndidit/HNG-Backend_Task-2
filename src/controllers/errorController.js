@@ -7,8 +7,8 @@ const globalErrorHandler = (error, req, res, next) => {
   error.status = error.status || "Error";
 
   res.status(error.statusCode).json({
+    status: error.status,
     Error: {
-      status: error.status,
       message: error.message,
     },
   });
