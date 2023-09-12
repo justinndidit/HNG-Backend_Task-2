@@ -67,6 +67,34 @@ e.g
 }
 }
 
+# Get all Person from DB
+
+# Description:
+
+    GET PERSON FROM Database.
+
+# HTTP Method:
+
+    GET
+
+# Endpoint:
+
+    /api
+
+# Response
+
+    The response will be a JSON object confirming the creation of the person.
+
+e.g
+{
+"status": "Success",
+"message": "People retrieved successfully",
+"data": {
+"name": "Favour Olasoji",
+"id": "64ff7b927ff4d12a4a0b16a2"
+}
+}
+
 # Get a Person
 
 # Description:
